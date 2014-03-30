@@ -57,3 +57,7 @@ Display our modal test
 ``` HTML
 {{> testEdmunds}}
 ```
+
+Example result
+
+![](https://farm8.staticflickr.com/7240/13523891855_96706a3200.jpg)
