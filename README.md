@@ -1,7 +1,7 @@
 Meteor Edmund's API
 ==========
 
-Meteor package for [Edmund's Javscript SDK](https://github.com/EdmundsAPI/sdk-javascript).
+[Meteor](https://www.meteor.com/) package for [Edmund's Javscript SDK](https://github.com/EdmundsAPI/sdk-javascript).
 
 Tested with Meteor 0.8.0
 
