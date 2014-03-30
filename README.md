@@ -1,35 +1,59 @@
 Meteor Edmund's API
 ==========
 
-Meteor packaging for [Edmund's API](https://github.com/EdmundsAPI/sdk-javascript).
+Meteor package for [Edmund's Javscript SDK](https://github.com/EdmundsAPI/sdk-javascript).
 
-[API doc](http://developer.edmunds.com/)
+Tested with Meteor 0.8.0
 
-``` sh
+Edmund's [API doc](http://developer.edmunds.com/)
+
+
+To install package
+```sh
 $ meteor add edmunds
 ```
 
+Set your API Key
+``` javascript
+if (Meteor.isClient) {
+  Meteor.startup(function () {
+    Edmunds.key = 'YOUR API KEY';
+  });
+}
+```
+
 Usage example (client)
-```javascript
-  Template.hello.rendered = function() {
-    // Instantiate the SDK
-    var res = new EDMUNDSAPI('YOUR API KEY');
-    // Optional parameters
-    var options = {
-      "state": "new"
-    };
+``` HTML
+{{> Edmunds color="grey"}}
+```
+As defined in their [Terms Of Service](http://developer.edmunds.com/terms_of_service/index.html), point 7.5, we must include an Edmunds Web Logo within our app, so the color parameter is optionnal and define which image to pick from their [API branding guide](http://developer.edmunds.com/api_branding_guide/)
 
-    // Callback function to be called when the API response is returned
-    function success(res) {
-      console.log("Total number of new Acura MDXs is: " + res.yearsCount);
-    }
+Possible color values: `white` (default), `grey`, `red`
 
-    // Oops, Houston we have a problem!
-    function fail(data) {
-      console.log(data);
-    }
 
-    // Fire the API call
-    res.api('/api/vehicle/v2/acura/mdx/years/count', options, success, fail);
-  };
+Usage example within a modal
+``` HTML
+<template name="testEdmunds">
+	<div class="modal show fade in" id="edmunds-modal" data-backdrop="true" style="width:auto">
+		<div class="modal-header">
+			<button class="close" data-dismiss="modal">×</button>
+			<h3>Select a car</h3>
+		</div>
+		<div class="modal-body">
+			<form class="form-horizontal">
+				{{> Edmunds color="grey"}}
+			</form>
+		</div>
+		<div class="modal-footer">
+			<a href="#" class="btn" data-dismiss="modal">Close</a><!-- note the use of "data-dismiss" -->
+			<a href="#" class="btn btn-primary" id="save-profile">Save</a>
+		</div>
+		
+	</div>
+</template>
+```
+
+Display our modal test
+``` HTML
+{{> testEdmunds}}
 ```

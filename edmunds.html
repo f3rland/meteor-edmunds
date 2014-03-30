@@ -1,0 +1,77 @@
+
+
+<template name="edmunds">
+
+	<div class="control-group">
+		<label class="control-label" for="edmunds-yearsList">Year: </label>
+		<div class="controls">
+			<select id="edmunds-yearsList">
+				{{#each years}}
+					{{> edmundsyear}}
+				{{/each}}
+			</select>
+		</div>
+
+		<label class="control-label" for="edmunds-makesList">Make: </label>
+		<div class="controls">
+			<select id="edmunds-makesList">
+				{{#each makes}}
+					{{> edmundsmake}}
+				{{/each}}
+			</select>
+		</div>
+
+		<label class="control-label" for="edmunds-modelsList">Model: </label>
+		<div class="controls">
+			<select id="edmunds-modelsList">
+				{{#each models}}
+					{{> edmundsmodel}}
+				{{/each}}
+			</select>
+		</div>
+
+		<label class="control-label" for="edmunds-trimList">Trim: </label>
+		<div class="controls">
+			<select id="edmunds-trimList">
+				{{#each trims}}
+					{{> edmundstrim}}
+				{{/each}}
+			</select>
+		</div>
+	</div>
+
+	{{#if displayDetails}}
+	<div class="control-group">
+		<label class="control-label" for="edmunds-trimList">Details:</label>
+		<div class="controls">
+			Doors: {{details.numOfDoors}}<BR />
+			Driven Wheels: {{details.drivenWheels}}<BR />
+			Transmission: {{details.transmission.transmissionType}}<BR />
+			MPG highway: {{details.MPG.highway}}<BR />
+			MPG city: {{details.MPG.city}}<BR />
+		</div>
+	</div>
+	{{/if}}
+
+	{{#with logo color}}
+		{{.}}
+	{{/with}}
+
+</template>
+
+
+<template name="edmundsyear">
+    <option value="{{this}}">{{this}}</option>
+</template>
+
+<template name="edmundsmake">
+    <option value="{{id}}">{{name}}</option>
+</template>
+
+<template name="edmundsmodel">
+    <option value="{{id}}">{{name}}</option>
+</template>
+
+<template name="edmundstrim">
+    <option value="{{id}}">{{name}}</option>
+</template>
